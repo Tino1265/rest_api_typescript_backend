@@ -3,8 +3,8 @@ import Product from "../models/Product"
 import {check, validationResult} from 'express-validator'
 
 export const getProductById = async (req:Request,res:Response)=>{
-        const {id} = req.params;
-        const product = await Product.findByPk(+id)
+        const id = +req.params.id;
+        const product = await Product.findByPk(id)
         if(!product){
             return res.status(404).json({error:'Producto No Encontrado'})
         }
@@ -47,8 +47,8 @@ export const createProduct = async(req:Request,res:Response)=>{
 }
 
 export const updateProduct = async (req:Request,res:Response)=>{
-        const {id} = req.params;
-        const product = await Product.findByPk(+id);
+        const id = +req.params.id;
+        const product = await Product.findByPk(id);
         if(!product){
             return res.status(404).json({error:'Producto No Encontrado'})
         }
@@ -66,8 +66,8 @@ export const updateProduct = async (req:Request,res:Response)=>{
 }
 
 export const updateAvailability = async (req:Request,res:Response)=>{
-        const {id} = req.params;
-        const product = await Product.findByPk(+id);
+        const id = +req.params.id;
+        const product = await Product.findByPk(id);
         if(!product){
             return res.status(404).json({error: 'No existe'})
         }
@@ -77,8 +77,8 @@ export const updateAvailability = async (req:Request,res:Response)=>{
 }
 
 export const deleteProduct = async (req:Request,res:Response)=>{
-        const {id} = req.params;
-        const product = await Product.findByPk(+id);
+        const id = +req.params.id;
+        const product = await Product.findByPk(id);
         if(!product){
             return res.status(404).json({error: 'No existe'})
         }
